@@ -13,7 +13,7 @@ const ActionBtn = props => {
 const styles = StyleSheet.create({
   button: {
     width: 148,
-    height: 75,
+    height: 65,
     color: '#fff',
     borderRadius: 10,
     alignItems: 'center',

@@ -67,14 +67,15 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: '700',
-    paddingTop:20,
+    paddingTop:40,
     paddingBottom: 20,
     textAlign:'center'
   },
 
   subtitle: {
     fontSize: 20,
-    fontWeight:'600'
+    fontWeight: '600',
+    paddingBottom: 10,
   },
 
   textBox: {

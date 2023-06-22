@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
-    overflow:'scroll'
   },
 
   header: {
@@ -70,7 +69,8 @@ const styles = StyleSheet.create({
 
   subtitle: {
     fontSize: 20,
-    fontWeight:'700'
+    fontWeight: '700',
+    paddingBottom: 10,
   },
 
   textBox: {

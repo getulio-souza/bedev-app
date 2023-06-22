@@ -21,14 +21,14 @@ const Home = ({navigation}) => {
       <View style={styles.btnsContainer}>
         <TouchableOpacity>
           <ActionBtn
-            text="quero estudar"
+            text="Quero estudar"
             color='#390072'
             onPress={()=> navigation.navigate('Courses')}
           />
         </TouchableOpacity>
         <TouchableOpacity>
           <ActionBtn
-            text="quero trabalhar"
+            text="Quero trabalhar"
             color="#390072"
             onPress={()=> navigation.navigate('Jobs')}
           />
@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
     backgroundColor:'#fff',
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    gap:20
   },
 
   header: {
