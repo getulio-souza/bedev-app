@@ -30,6 +30,7 @@ const Home = ({navigation}) => {
           <ActionBtn
             text="quero trabalhar"
             color="#390072"
+            onPress={()=> navigation.navigate('Jobs')}
           />
         </TouchableOpacity>
       </View>

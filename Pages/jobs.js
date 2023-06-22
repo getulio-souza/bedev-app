@@ -2,12 +2,12 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'rea
 import React from 'react'
 import OptionBtn from '../Components/optionBtn'
 
-const Courses = () => {
+const Jobs = () => {
   return (
     <ScrollView>
       <View style={styles.backgroundContainer}>
         <View style={styles.header}>
-          <Text style={styles.title}>Nossos cursos</Text>
+          <Text style={styles.title}>Nossas vagas</Text>
         </View>
         <View>
           <Image
@@ -17,31 +17,28 @@ const Courses = () => {
         </View>
         {/* text */}
         <View style={styles.textBox}>
-          <Text style={styles.subtitle}>Nossas formações</Text>
+          <Text style={styles.subtitle}>Sua carreira começa aqui!</Text>
           <Text>
-            Pensando nas habilidade e aptidões de cada um, resolvemos criar três
-            caminhos que convergem para o mesmo objetivo: capacitar todos
-            aqueles que se interessam pela programação e querem se tornar
-            profissionais qualificados para o mercado de trabalho.
+            Entrar na área de programação não precisa ser uma tarefa difícil e penosa. Por isso que resolvemos criar essa ponte entre empresas que estão em busca de jovens talentos e programadores recém-formados que querem a primeira oportunidade para mostrarem todo o seu potencial. 
           </Text>
         </View>
         {/* options */}
         <View style={styles.optionsContainer}>
           {/* single option */}
           <TouchableOpacity>
-            <OptionBtn text="Formação Front-end" color="#390072" />
+            <OptionBtn text="Vagas Front-end" color="#390072" />
           </TouchableOpacity>
           {/* single option */}
           <TouchableOpacity>
-            <OptionBtn text="Formação Back-end" color="#390072" />
+            <OptionBtn text="Vagas Back-end" color="#390072" />
           </TouchableOpacity>
           {/* single option */}
           <TouchableOpacity>
-            <OptionBtn text="Formação Full-Stack" color="#390072" />
+            <OptionBtn text="Vagas Full-Stack" color="#390072" />
           </TouchableOpacity>
           {/* single option */}
           <TouchableOpacity>
-            <OptionBtn text="Outras formações" color="#390072" />
+            <OptionBtn text="Outras vagas" color="#390072" />
           </TouchableOpacity>
         </View>
       </View>
@@ -94,4 +91,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default Courses       
+export default Jobs       
