@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import ActionBtn from '../Components/actionBtn'
 
-const Home = () => {
+const Home = ({navigation}) => {
   return (
     <View style={styles.backgroundContainer}>
       {/* header */}
@@ -23,7 +23,7 @@ const Home = () => {
           <ActionBtn
             text="quero estudar"
             color='#390072'
-            
+            onPress={()=> navigation.navigate('Courses')}
           />
         </TouchableOpacity>
         <TouchableOpacity>
