@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
-import OptionBtn from '../Components/optionBtn'
+import GenericBtn from '../Components/optionBtn';
 
 const Courses = () => {
   return (
@@ -29,19 +29,19 @@ const Courses = () => {
         <View style={styles.optionsContainer}>
           {/* single option */}
           <TouchableOpacity>
-            <OptionBtn text="Formação Front-end" color="#390072" />
+            <GenericBtn text="Formação Front-end" color="#390072" />
           </TouchableOpacity>
           {/* single option */}
           <TouchableOpacity>
-            <OptionBtn text="Formação Back-end" color="#390072" />
+            <GenericBtn text="Formação Back-end" color="#390072" />
           </TouchableOpacity>
           {/* single option */}
           <TouchableOpacity>
-            <OptionBtn text="Formação Full-Stack" color="#390072" />
+            <GenericBtn text="Formação Full-Stack" color="#390072" />
           </TouchableOpacity>
           {/* single option */}
           <TouchableOpacity>
-            <OptionBtn text="Outras formações" color="#390072" />
+            <GenericBtn text="Outras formações" color="#390072" />
           </TouchableOpacity>
         </View>
       </View>
@@ -67,14 +67,14 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: '700',
-    paddingTop:40,
+    paddingTop:20,
     paddingBottom: 20,
     textAlign:'center'
   },
 
   subtitle: {
     fontSize: 20,
-    fontWeight:'700'
+    fontWeight:'600'
   },
 
   textBox: {

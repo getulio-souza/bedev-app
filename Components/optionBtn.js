@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
-const OptionBtn = props => {
+const GenericBtn = props => {
   const content = (
     <View style={[styles.button, {backgroundColor: props.color}]}>
       <Text style={styles.text}>{props.text}</Text>
@@ -13,7 +13,7 @@ const OptionBtn = props => {
 const styles = StyleSheet.create({
   button: {
     width: 300,
-    height: 75,
+    height: 65,
     color: '#fff',
     borderRadius: 10,
     alignItems: 'center',
@@ -21,9 +21,9 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#fff',
-    fontSize: 16,
-    fontWeight:'700'
+    fontSize: 18,
+    fontWeight:'900'
   }
 })
 
-export default OptionBtn
+export default GenericBtn

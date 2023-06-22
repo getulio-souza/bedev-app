@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
-import OptionBtn from '../Components/optionBtn'
-
+import GenericBtn from '../Components/optionBtn';
 const Jobs = () => {
   return (
     <ScrollView>
@@ -26,19 +25,19 @@ const Jobs = () => {
         <View style={styles.optionsContainer}>
           {/* single option */}
           <TouchableOpacity>
-            <OptionBtn text="Vagas Front-end" color="#390072" />
+            <GenericBtn text="Vagas Front-end" color="#390072" />
           </TouchableOpacity>
           {/* single option */}
           <TouchableOpacity>
-            <OptionBtn text="Vagas Back-end" color="#390072" />
+            <GenericBtn text="Vagas Back-end" color="#390072" />
           </TouchableOpacity>
           {/* single option */}
           <TouchableOpacity>
-            <OptionBtn text="Vagas Full-Stack" color="#390072" />
+            <GenericBtn text="Vagas Full-Stack" color="#390072" />
           </TouchableOpacity>
           {/* single option */}
           <TouchableOpacity>
-            <OptionBtn text="Outras vagas" color="#390072" />
+            <GenericBtn text="Outras vagas" color="#390072" />
           </TouchableOpacity>
         </View>
       </View>
