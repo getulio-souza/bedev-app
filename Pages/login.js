@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import OptionBtn from "../Components/optionBtn";
 
@@ -10,7 +10,10 @@ const Login = () => {
         <View>
           <Text style={styles.loginTitle}>Login</Text>
         </View>
-        
+        <Image
+          style={{position:'absolute', top:0, left:0 }}
+          source={require('../assets/wave.svg')}
+        />
       </View>
       {/* inputs */}
       <View style={styles.inputsContainer}>
@@ -63,6 +66,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#390072",
     height: 90,
     margin: "auto",
+    position:'relative'
   },
 
   loginTitle: {
