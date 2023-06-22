@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
 
   subtitle: {
     fontSize: 20,
-    fontWeight:'600'
+    fontWeight:'700'
   },
 
   textBox: {
