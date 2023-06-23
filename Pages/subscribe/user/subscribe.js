@@ -150,7 +150,9 @@ const styles = StyleSheet.create({
     height: 10,
     backgroundColor: '#9D9D9',
     borderRadius: 10,
-    position:'relative'
+    position: 'relative',
+    borderWidth: 1,
+    borderColor:'#eee5e5'
   },
 
   statusbarCompleted: {

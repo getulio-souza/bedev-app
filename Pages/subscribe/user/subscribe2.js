@@ -39,7 +39,7 @@ const Subscribe2 = ({navigation}) => {
         {/* select */}
         <View style={{paddingLeft:10, paddingRight: 90}}>
           <Picker selectedValue={this.state.user} onValueChange={this.updateUser}>
-            
+            <Picker.Item label="Sua última formação" value="Sua última formação" />
             <Picker.Item label="Front-end" value="Front-end" />
             <Picker.Item label="Back-end" value="Back-end" />
             <Picker.Item label="Full-Stack" value="Full-Stack" />
@@ -145,7 +145,9 @@ const styles = StyleSheet.create({
     height: 10,
     backgroundColor: '#9D9D9',
     borderRadius: 10,
-    position:'relative'
+    position: 'relative',
+    borderWidth: 1,
+    borderColor:'#eee5e5'
   },
 
   statusbarCompleted: {
