@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
-import GenericBtn from '../Components/optionBtn';
+import GenericBtn from '../../Components/optionBtn';
 
-const Courses = () => {
+const Courses = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.backgroundContainer}>
@@ -12,7 +12,7 @@ const Courses = () => {
         <View>
           <Image
             style={{ width: 300, height: 300 }}
-            source={require("../assets/intro-img(2).jpg")}
+            source={require("../../assets/intro-img(2).jpg")}
           />
         </View>
         {/* text */}
@@ -29,7 +29,11 @@ const Courses = () => {
         <View style={styles.optionsContainer}>
           {/* single option */}
           <TouchableOpacity>
-            <GenericBtn text="Formação Front-end" color="#390072" />
+            <GenericBtn
+              text="Formação Front-end"
+              color="#390072"
+              onPress={()=> navigation.navigate('FrontEnd')}
+            />
           </TouchableOpacity>
           {/* single option */}
           <TouchableOpacity>

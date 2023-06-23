@@ -64,7 +64,7 @@ const Subscribe3 = ({navigation}) => {
         <OptionBtn
           text="Finalizar"
           color="#390072"
-          onPress={()=> navigation.navigate('SubscribeScreen2')}
+          onPress={()=> navigation.navigate('Login')}
         />
       </TouchableOpacity>
       {/* status bar */}

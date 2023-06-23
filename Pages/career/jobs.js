@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
-import GenericBtn from '../Components/optionBtn';
+import GenericBtn from '../../Components/optionBtn';
 const Jobs = () => {
   return (
     <ScrollView>
@@ -11,7 +11,7 @@ const Jobs = () => {
         <View>
           <Image
             style={{ width: 300, height: 300 }}
-            source={require("../assets/intro-img(2).jpg")}
+            source={require("../../assets/intro-img(2).jpg")}
           />
         </View>
         {/* text */}

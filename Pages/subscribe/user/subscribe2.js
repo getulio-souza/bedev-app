@@ -56,7 +56,7 @@ const Subscribe2 = ({navigation}) => {
           <View style={{ borderBottomWidth: 1, width: "90%" }}></View>
         </View>
         {/* CPF */}
-        <View style={styles.inputBox}>
+        <View style={styles.inputBox}> 
           <TextInput
             style={styles.inputText}
             placeholder="Seu CPF"
@@ -71,7 +71,7 @@ const Subscribe2 = ({navigation}) => {
           text="Continuar"
           color="#390072"
           onPress={()=> navigation.navigate('Subscribe3')}
-        />
+        /> 
       </TouchableOpacity>
       {/* status bar */}
       <View style={styles.statusbarContainer}>

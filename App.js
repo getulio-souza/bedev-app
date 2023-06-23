@@ -1,8 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './Pages/Home';
-import Courses from './Pages/courses';
-import Jobs from './Pages/jobs';
+import Courses from './Pages/education/courses';
+import FrontEnd from './Pages/education/Frameworks/Front_end/frontEnd';
+import Jobs from './Pages/career/jobs';
 import Login from './Pages/login';
 import Subscribe from './Pages/subscribe/user/subscribe';
 import Subscribe2 from './Pages/subscribe/user/subscribe2';
@@ -13,8 +14,12 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Subscribe">
-        <Stack.Screen name="Home" component={Home} options={{headerShown:false}} />
-        <Stack.Screen name="Courses" component={Courses} options={{headerShown:false}}  />
+        <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+        
+        <Stack.Screen name="Courses" component={Courses} options={{ headerShown: false }} />
+        <Stack.Screen name="FrontEnd" component={FrontEnd} options={{ headerShown: false }} />
+        
+
         <Stack.Screen name="Jobs" component={Jobs} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="Subscribe" component={Subscribe} options={{headerShown: false}}/>

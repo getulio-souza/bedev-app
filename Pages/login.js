@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from "react-native";
 import React from "react";
-import OptionBtn from "../Components/optionBtn";
+import OptionBtn from "../Components/optionBtn"
 
-const Login = () => {
+const Login = ({navigation}) => {
   return (
     <View style={styles.loginBackground}>
       {/* header */}
@@ -17,7 +17,7 @@ const Login = () => {
       </View>
       {/* inputs */}
       <View style={styles.inputsContainer}>
-        {/* name */}
+        {/* name */}        
         <View style={styles.inputBox}>
           <TextInput
             style={styles.inputText}
@@ -49,7 +49,8 @@ const Login = () => {
       <TouchableOpacity style={{ alignItems: 'center', paddingTop:100}}>
           <OptionBtn
             text="Login"
-            color="#390072"
+          color="#390072"
+          onPress={()=> navigation.navigate('Home')}
           />
         </TouchableOpacity>
     </View>
