@@ -4,18 +4,20 @@ import Home from './Pages/Home';
 import Courses from './Pages/courses';
 import Jobs from './Pages/jobs';
 import Login from './Pages/login';
-
+import Subscribe from './Pages/subscribe/user/subscribe';
+import Subscribe2 from './Pages/subscribe/user/subscribe2';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Subscribe">
         <Stack.Screen name="Home" component={Home} options={{headerShown:false}} />
         <Stack.Screen name="Courses" component={Courses} options={{headerShown:false}}  />
         <Stack.Screen name="Jobs" component={Jobs} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-        
+        <Stack.Screen name="Subscribe" component={Subscribe} options={{headerShown: false}}/>
+        <Stack.Screen name="Subscribe2" component={Subscribe2} options={{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>             
   );
