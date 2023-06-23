@@ -11,7 +11,7 @@ const Jobs = () => {
         <View>
           <Image
             style={{ width: 300, height: 300 }}
-            source={require("../../assets/intro-img(2).jpg")}
+            source={require("../../assets/intro-img(2).jpg")}   
           />
         </View>
         {/* text */}
