@@ -45,7 +45,11 @@ const Courses = ({navigation}) => {
           </TouchableOpacity>
           {/* single option */}
           <TouchableOpacity>
-            <GenericBtn text="Formação Full-Stack" color="#390072" />
+            <GenericBtn
+              text="Formação Full-Stack"
+              color="#390072"
+              onPress={()=> navigation.navigate('FullStack')}
+            />
           </TouchableOpacity>
           {/* single option */}
           <TouchableOpacity>
