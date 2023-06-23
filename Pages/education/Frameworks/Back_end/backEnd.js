@@ -9,12 +9,12 @@ import {
 import React from "react";
 import GenericBtn from "../../../../Components/optionBtn";
 
-const FrontEnd = () => {
+const BackEnd = () => {
   return (
     <ScrollView>
       <View style={styles.backgroundContainer}>
         <View style={styles.header}>
-          <Text style={styles.title}>Formação Front-End</Text>
+          <Text style={styles.title}>Formação Back-End</Text>
         </View>
         <View>
           <Image
@@ -24,31 +24,31 @@ const FrontEnd = () => {
         </View>
         {/* text */}
         <View style={styles.textBox}>
-          <Text style={styles.subtitle}>Construa layouts incríveis</Text>
+          <Text style={styles.subtitle}>Saiba o que acontece por trás dos panos</Text>
           <Text>
-            A nossa formação Front-End foi criada pensando em todos que se identificam
-            com o desenvolvimento de interfaces gráficas chamativas, intuitivas
-            e responsivas. Escolha um dos frameworks abaixo para começar a sua
-            jornada como desenvolvedor front-end.
+            A nossa formação Back-End foi criada pensando em oferecer ao aluno a
+            oportunidade de aprender mais sobre banco de dados, conexão e
+            construção de APIs. Escolha uma das linguagens abaixo para começar
+            a sua jornada como desenvolvedor Back-end.
           </Text>
         </View>
         {/* options */}
         <View style={styles.optionsContainer}>
           {/* single option */}
           <TouchableOpacity>
-            <GenericBtn text="Javascript" color="#390072" />
+            <GenericBtn text="Java" color="#390072" />
           </TouchableOpacity>
           {/* single option */}
           <TouchableOpacity>
-            <GenericBtn text="Angular" color="#390072" />
+            <GenericBtn text="C#" color="#390072" />                                   
           </TouchableOpacity>
           {/* single option */}
           <TouchableOpacity>
-            <GenericBtn text="React" color="#390072" />   
+            <GenericBtn text="Phyton" color="#390072" />
           </TouchableOpacity>
           {/* single option */}
           <TouchableOpacity>
-            <GenericBtn text="Vue.js" color="#390072" />
+            <GenericBtn text="Node" color="#390072" />
           </TouchableOpacity>
         </View>
       </View>
@@ -101,4 +101,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FrontEnd;
+export default BackEnd;

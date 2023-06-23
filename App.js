@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './Pages/Home';
 import Courses from './Pages/education/courses';
 import FrontEnd from './Pages/education/Frameworks/Front_end/frontEnd';
+import BackEnd from './Pages/education/Frameworks/Back_end/backEnd';
 import Jobs from './Pages/career/jobs';
 import Login from './Pages/login';
 import Subscribe from './Pages/subscribe/user/subscribe';
@@ -21,6 +22,7 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="Courses" component={Courses} options={{ headerShown: false }} />
         <Stack.Screen name="FrontEnd" component={FrontEnd} options={{ headerShown: false }} />
+        <Stack.Screen name="BackEnd" component={BackEnd} options={{ headerShown: false }} />
         <Stack.Screen name="Jobs" component={Jobs} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>             

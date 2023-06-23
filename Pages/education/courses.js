@@ -37,7 +37,11 @@ const Courses = ({navigation}) => {
           </TouchableOpacity>
           {/* single option */}
           <TouchableOpacity>
-            <GenericBtn text="Formação Back-end" color="#390072" />
+            <GenericBtn
+              text="Formação Back-end"
+              color="#390072"
+              onPress={()=> navigation.navigate('BackEnd')}
+            />
           </TouchableOpacity>
           {/* single option */}
           <TouchableOpacity>
