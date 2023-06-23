@@ -10,7 +10,7 @@ import React from "react";
 import OptionBtn from "../../../Components/optionBtn";
 import { Picker } from "@react-native-picker/picker";
 
-const Subscribe2 = ({navigation}) => {
+const Subscribe3 = ({navigation}) => {
 
   // gravar opcao select
   state = { user: '' }
@@ -32,34 +32,28 @@ const Subscribe2 = ({navigation}) => {
       </View>
       {/* title */}
       <View style={styles.titleInfo}>
-        <Text style={styles.title}>Dados pessoais</Text>
+        <Text style={styles.title}>Dados adicionais</Text>
       </View>
       {/* inputs */}
       <View style={styles.inputsContainer}>
-        {/* select */}
-        <View style={{paddingLeft:10, paddingRight: 90}}>
-          <Picker selectedValue={this.state.user} onValueChange={this.updateUser}>
-            <Picker.Item label="Sua última formação" value="Sua última formação" />
-            <Picker.Item label="Front-end" value="Front-end" />
-            <Picker.Item label="Back-end" value="Back-end" />
-            <Picker.Item label="Full-Stack" value="Full-Stack" />
-            <Picker.Item label="Data" value="Data" />
-            <Picker.Item label="Mobile" value="Mobile" />
-          </Picker>
-        </View>
-        {/* name */}
-        <View style={styles.inputBox}>
+        
+         <View style={styles.inputBox}>
           <TextInput
             style={styles.inputText}
-            placeholder="Seu nome completo"
           ></TextInput>
           <View style={{ borderBottomWidth: 1, width: "90%" }}></View>
         </View>
-        {/* CPF */}
+
         <View style={styles.inputBox}>
           <TextInput
             style={styles.inputText}
-            placeholder="Seu CPF"
+          ></TextInput>
+          <View style={{ borderBottomWidth: 1, width: "90%" }}></View>
+        </View>
+
+        <View style={styles.inputBox}>
+          <TextInput
+            style={styles.inputText}
             keyboardType="number-pad"
           ></TextInput>
           <View style={{ borderBottomWidth: 1, width: "90%" }}></View>
@@ -68,9 +62,9 @@ const Subscribe2 = ({navigation}) => {
       {/* button */}
       <TouchableOpacity style={{ alignItems: "center", paddingTop: 100 }}>
         <OptionBtn
-          text="Continuar"
+          text="Finalizar"
           color="#390072"
-          onPress={()=> navigation.navigate('Subscribe3')}
+          onPress={()=> navigation.navigate('SubscribeScreen2')}
         />
       </TouchableOpacity>
       {/* status bar */}
@@ -79,7 +73,7 @@ const Subscribe2 = ({navigation}) => {
           <View style={styles.statusbarCompleted}></View>
         </View>
         <View>
-        <Text>2/3</Text>
+        <Text>3/3</Text>
         </View>
       </View>
     </View>
@@ -123,7 +117,7 @@ const styles = StyleSheet.create({
   },
 
   inputBox: {
-    paddingTop: 80,
+    paddingTop: 70,
   },
 
   inputText: {
@@ -154,11 +148,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left:0,
     backgroundColor: '#390072',
-    width: '66.6%',
+    width: '100%',
     height: 10,
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius:10
+    borderRadius:10
   },
 });
 
-export default Subscribe2;
+export default Subscribe3;
