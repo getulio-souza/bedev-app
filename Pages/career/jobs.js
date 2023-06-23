@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
 import GenericBtn from '../../Components/optionBtn';
-const Jobs = () => {
+
+const Jobs = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.backgroundContainer}>
@@ -25,7 +26,11 @@ const Jobs = () => {
         <View style={styles.optionsContainer}>
           {/* single option */}
           <TouchableOpacity>
-            <GenericBtn text="Vagas Front-end" color="#390072" />
+            <GenericBtn
+              text="Vagas Front-end"
+              color="#390072"
+              onPress={()=> navigation.navigate('FrontJobs')}
+            />
           </TouchableOpacity>
           {/* single option */}
           <TouchableOpacity>

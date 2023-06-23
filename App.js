@@ -8,6 +8,7 @@ import BackEnd from './Pages/education/Frameworks/Back_end/backEnd';
 import FullStack from './Pages/education/Frameworks/FullStack/fullStack';
 
 import Jobs from './Pages/career/jobs';
+import FrontJobs from './Pages/career/front/frontJobs';
 
 import Login from './Pages/login';
 import Subscribe from './Pages/subscribe/user/subscribe';
@@ -29,6 +30,7 @@ export default function App() {
         <Stack.Screen name="BackEnd" component={BackEnd} options={{ headerShown: false }} />
         <Stack.Screen name="FullStack" component={FullStack} options={{ headerShown: false }} />
         <Stack.Screen name="Jobs" component={Jobs} options={{ headerShown: false }} />
+        <Stack.Screen name="FrontJobs" component={FrontJobs} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>             
   );
