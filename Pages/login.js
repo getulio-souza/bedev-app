@@ -52,7 +52,15 @@ const Login = ({navigation}) => {
           color="#390072"
           onPress={()=> navigation.navigate('Home')}
           />
-        </TouchableOpacity>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.linkToSubscribe}>
+        <Text
+          style={styles.linkToSubscribeText}
+          onPress={()=> navigation.navigate('Subscribe')}
+        >
+          Ainda não tem cadastro?
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -91,6 +99,15 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     fontSize: 20,
   },
+
+  linkToSubscribe: {
+    alignItems: "center",
+    paddingTop: 10,
+  },
+
+  linkToSubscribeText: {
+    textDecorationLine: 'underline'
+  }
 
 });
 
