@@ -10,7 +10,7 @@ import {
 import React from "react";
 import ShowMoreBtn from "../../../Components/showMoreBtn";
 
-const FrontJobs = () => {
+const FrontJobs = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.backgroundContainer}>
@@ -44,7 +44,11 @@ const FrontJobs = () => {
               </View>
               {/* show more btn */}
               <TouchableOpacity>
-                <ShowMoreBtn text="ver mais" color="#390072" />
+                  <ShowMoreBtn
+                    text="ver mais"
+                    color="#390072"
+                    onPress={()=> navigation.navigate('FrontSingleJob')}
+                  />
               </TouchableOpacity>
             </View>
 

@@ -9,6 +9,7 @@ import FullStack from './Pages/education/Frameworks/FullStack/fullStack';
 
 import Jobs from './Pages/career/jobs';
 import FrontJobs from './Pages/career/front/frontJobs';
+import FrontSingleJob from './Pages/career/front/frontSingleJob';
 
 import Login from './Pages/login';
 import Subscribe from './Pages/subscribe/user/subscribe';
@@ -19,7 +20,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="FrontJobs">
+      <Stack.Navigator initialRouteName="FrontSingleJob">
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="Subscribe" component={Subscribe} options={{headerShown: false}}/>
         <Stack.Screen name="Subscribe2" component={Subscribe2} options={{ headerShown: false }} />
@@ -31,6 +32,7 @@ export default function App() {
         <Stack.Screen name="FullStack" component={FullStack} options={{ headerShown: false }} />
         <Stack.Screen name="Jobs" component={Jobs} options={{ headerShown: false }} />
         <Stack.Screen name="FrontJobs" component={FrontJobs} options={{ headerShown: false }} />
+        <Stack.Screen name="FrontSingleJob" component={FrontSingleJob} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>             
   );

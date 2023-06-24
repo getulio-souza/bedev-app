@@ -12,8 +12,8 @@ const ShowMoreBtn = props => {
 
 const styles = StyleSheet.create({
   button: {
-    width: 65,
-    height: 30,
+    width: 85,
+    height: 40,
     color: '#fff',
     borderRadius: 10,
     alignItems: 'center',
