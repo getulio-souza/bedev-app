@@ -7,24 +7,26 @@ import {
   ScrollView,
   Button,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ShowMoreBtn from "../../../Components/showMoreBtn";
+import axios from "axios";
 
-import { SearchJobs } from "../../inddedAPI";
+// import { SearchJobs } from "../../inddedAPI";
 
 const FrontJobs = ({ navigation }) => {
 
   const [results, setResults] = useState([]);
 
-  const handleSearch = async () => {
-    try {
-      const query = 'Front End Developer';
-      const data = await SearchJobs(query);
-      setResults(data.results)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  useEffect(() => {
+    axios.get('https://workable.p.rapidapi.com/%7BAPIKEY%7D/jobs')
+      .then((response) => {
+      setResults(response.data)
+      })
+    
+      .catch(() => {
+      console.log("Houve um erro")
+    })
+  })
 
   return (
     <ScrollView>
@@ -38,52 +40,11 @@ const FrontJobs = ({ navigation }) => {
           <Text>Novas oportunidades todas as semanas </Text>
         </View>
 
-        <View style={{flexDirection:'column', gap:30}}>
+        <View style={{ flexDirection: 'column', gap: 30 }}>
 
-        {/* job card */}
-        <View style={styles.backgroundCard}>
-          {/* jobinfo */}
-          <View>
-            <View style={{ flexDirection: "row", paddingBottom:20, gap:40 }}>
-              <View style={styles.jobTitle}>
-                <View>
-                  <Image
-                    style={{ width: 30, height: 30, borderRadius: 30 }}
-                    source={require("../../../assets/job-logo.png")}
-                  />
-                </View>
-                <View>
-                  <Text style={{fontWeight:'900'}}>React Front End Jr.</Text>
-                  {/* <Text style={{fontWeight:'900'}}>{title}</Text> */}
-                  <Text style={{color:'#A69E9E'}}>Company X</Text>
-                </View>
-              </View>
-              {/* show more btn */}
-              <TouchableOpacity>
-                  <ShowMoreBtn
-                    text="ver mais"
-                    color="#390072"
-                    onPress={handleSearch}
-                    // onPress={()=> navigation.navigate('FrontSingleJob')}
-                  />
-                  {results.map((job) => (
-                    <Text key={job.jobkey}>{job.jobTitle}</Text>
-                  ))}
-              </TouchableOpacity>
-            </View>
-
-            {/* company location */}
-            <View style={styles.companyLocation}>
-              <View style={styles.companyLocationInfo}>
-                <Text style={{color:'#fff'}}>Sao Paulo, Brasil</Text>
-                <Text style={{color:'#fff'}}>Av. Paulista, 122- Centro - São Paulo - SP</Text>
-              </View>
-            </View>
-          </View>
-        </View>
-
-        {/* job card */}
-        <View style={styles.backgroundCard}>
+          {results.map((results, key) => {
+          return(
+            <View style={styles.backgroundCard}>
           {/* jobinfo */}
           <View>
             <View style={{ flexDirection: "row", paddingBottom:20, gap:40 }}>
@@ -114,6 +75,9 @@ const FrontJobs = ({ navigation }) => {
             </View>
           </View>
         </View>
+            )
+            
+        })}
 
         {/* job card */}
         <View style={styles.backgroundCard}>
