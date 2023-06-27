@@ -7,10 +7,25 @@ import {
   ScrollView,
   Button,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import ShowMoreBtn from "../../../Components/showMoreBtn";
 
-const FrontJobs = ({navigation}) => {
+import { SearchJobs } from "../../inddedAPI";
+
+const FrontJobs = ({ navigation }) => {
+
+  const [results, setResults] = useState([]);
+
+  const handleSearch = async () => {
+    try {
+      const query = 'Front End Developer';
+      const data = await SearchJobs(query);
+      setResults(data.results)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <ScrollView>
       <View style={styles.backgroundContainer}>
@@ -39,6 +54,7 @@ const FrontJobs = ({navigation}) => {
                 </View>
                 <View>
                   <Text style={{fontWeight:'900'}}>React Front End Jr.</Text>
+                  {/* <Text style={{fontWeight:'900'}}>{title}</Text> */}
                   <Text style={{color:'#A69E9E'}}>Company X</Text>
                 </View>
               </View>
@@ -47,8 +63,12 @@ const FrontJobs = ({navigation}) => {
                   <ShowMoreBtn
                     text="ver mais"
                     color="#390072"
-                    onPress={()=> navigation.navigate('FrontSingleJob')}
+                    onPress={handleSearch}
+                    // onPress={()=> navigation.navigate('FrontSingleJob')}
                   />
+                  {results.map((job) => (
+                    <Text key={job.jobkey}>{job.jobTitle}</Text>
+                  ))}
               </TouchableOpacity>
             </View>
 
