@@ -9,24 +9,24 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import ShowMoreBtn from "../../../Components/showMoreBtn";
-import axios from "axios";
+// import axios from "axios";
 
 // import { SearchJobs } from "../../inddedAPI";
 
 const FrontJobs = ({ navigation }) => {
 
-  const [results, setResults] = useState([]);
+  // const [results, setResults] = useState([]);
 
-  useEffect(() => {
-    axios.get('https://workable.p.rapidapi.com/%7BAPIKEY%7D/jobs')
-      .then((response) => {
-      setResults(response.data)
-      })
+  // useEffect(() => {
+  //   axios.get('https://workable.p.rapidapi.com/%7BAPIKEY%7D/jobs')
+  //     .then((response) => {
+  //     setResults(response.data)
+  //     })
     
-      .catch(() => {
-      console.log("Houve um erro")
-    })
-  })
+  //     .catch(() => {
+  //     console.log("Houve um erro")
+  //   })
+  // })
 
   return (
     <ScrollView>
@@ -42,8 +42,8 @@ const FrontJobs = ({ navigation }) => {
 
         <View style={{ flexDirection: 'column', gap: 30 }}>
 
-          {results.map((results, key) => {
-          return(
+          {/* {results.map((results, key) => { */}
+          {/* return( */}
             <View style={styles.backgroundCard}>
           {/* jobinfo */}
           <View>
@@ -62,7 +62,11 @@ const FrontJobs = ({ navigation }) => {
               </View>
               {/* show more btn */}
               <TouchableOpacity>
-                <ShowMoreBtn text="ver mais" color="#390072" />
+                  <ShowMoreBtn
+                    text="ver mais"
+                    color="#390072"
+                    onPress={()=> navigation.navigate('FrontSingleJob')}
+                  />
               </TouchableOpacity>
             </View>
 
@@ -75,9 +79,10 @@ const FrontJobs = ({ navigation }) => {
             </View>
           </View>
         </View>
-            )
-            
-        })}
+      {/* //       )
+      //     }
+      //   )
+      // } */}
 
         {/* job card */}
         <View style={styles.backgroundCard}>
@@ -98,7 +103,10 @@ const FrontJobs = ({ navigation }) => {
               </View>
               {/* show more btn */}
               <TouchableOpacity>
-                <ShowMoreBtn text="ver mais" color="#390072" />
+                  <ShowMoreBtn
+                    text="ver mais"
+                    color="#390072"
+                  />
               </TouchableOpacity>
             </View>
 

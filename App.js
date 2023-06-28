@@ -20,7 +20,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="FrontJobs">
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="Subscribe" component={Subscribe} options={{headerShown: false}}/>
         <Stack.Screen name="Subscribe2" component={Subscribe2} options={{ headerShown: false }} />
