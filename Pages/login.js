@@ -8,7 +8,7 @@ const Login = ({navigation}) => {
       {/* header */}
       <View style={styles.header}>
         <View>
-          <Text style={styles.loginTitle}>Login</Text>
+          <Text style={styles.loginTitle}>Bem-vindo de volta</Text>
         </View>
         <Image
           style={{position:'absolute', top:0, left:0 }}

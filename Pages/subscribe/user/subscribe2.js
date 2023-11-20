@@ -68,7 +68,7 @@ const Subscribe2 = ({navigation}) => {
       {/* button */}
       <TouchableOpacity style={{ alignItems: "center", paddingTop: 100 }}>
         <OptionBtn
-          text="Continuar"
+          text="Cadastrar"
           color="#390072"
           onPress={()=> navigation.navigate('Subscribe3')}
         /> 

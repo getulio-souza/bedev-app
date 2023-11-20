@@ -23,8 +23,8 @@ export default function App() {
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="Subscribe" component={Subscribe} options={{headerShown: false}}/>
-        <Stack.Screen name="Subscribe2" component={Subscribe2} options={{ headerShown: false }} />
-        <Stack.Screen name="Subscribe3" component={Subscribe3} options={{headerShown: false}}/>
+        {/* <Stack.Screen name="Subscribe2" component={Subscribe2} options={{ headerShown: false }} /> */}
+        {/* <Stack.Screen name="Subscribe3" component={Subscribe3} options={{headerShown: false}}/> */}
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="Courses" component={Courses} options={{ headerShown: false }} />
         <Stack.Screen name="FrontEnd" component={FrontEnd} options={{ headerShown: false }} />
