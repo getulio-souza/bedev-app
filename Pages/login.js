@@ -17,11 +17,11 @@ const Login = ({ navigation }) => {
     const errors = {};
 
     if (!userInfo.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userInfo.email)) {
-      errors.email = 'E-mail inválido';
+      errors.email = 'E-mail obrigatório';
     }
 
     if (!userInfo.password || userInfo.password.length < 6) {
-      errors.password = "Senha muito curta. Mínimo de 6 caracteres.";
+      errors.password = "Senha obrigatória. Mínimo de 6 caracteres.";
     }
 
     setValidationErrors(errors);
