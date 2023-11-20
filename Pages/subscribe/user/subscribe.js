@@ -22,6 +22,8 @@ const Subscribe = ({ navigation }) => {
 
   const [selectedUser, setSelectedUser] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
+  const [isFormValid, setIsFormValid] = useState(false);
+
 
   const validateForm = () => {
     const errors = {};
@@ -55,8 +57,15 @@ const Subscribe = ({ navigation }) => {
     if (validateForm()) {
       console.log("Form is valid");
       console.log(userInfo);
-      // Add your custom submit logic here
-      // e.g., make an API call, navigate to another screen, etc.
+      navigation.navigate("Login")
+      setUserInfo({
+        fullname: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        selectOption: ""
+      });
+      setIsFormValid(false)
     } else {
       console.log("Form is invalid");
     }
