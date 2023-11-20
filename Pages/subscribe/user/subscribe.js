@@ -57,7 +57,7 @@ const Subscribe = ({ navigation }) => {
     if (validateForm()) {
       console.log("Form is valid");
       console.log(userInfo);
-      navigation.navigate("Login")
+      navigation.navigate("Login");
       setUserInfo({
         fullname: "",
         email: "",
@@ -124,6 +124,7 @@ const Subscribe = ({ navigation }) => {
                 )}
               </View>
               <TextInput
+                autoCapitalize="none"
                 value={userInfo.email}
                 onChangeText={(text) =>
                   setUserInfo({ ...userInfo, email: text })
@@ -149,12 +150,14 @@ const Subscribe = ({ navigation }) => {
                 )}
               </View>
               <TextInput
+                autoCapitalize = "none"
                 value={userInfo.password}
                 onChangeText={(text) =>
                   setUserInfo({ ...userInfo, password: text })
                 }
                 style={styles.inputText}
-                placeholder="********"
+                placeholder="Digite sua senha"
+                secureTextEntry={true}
               />
               <View style={{ borderBottomWidth: 1, width: "90%" }} />
             </View>

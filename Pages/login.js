@@ -1,8 +1,51 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import OptionBtn from "../Components/optionBtn"
 
-const Login = ({navigation}) => {
+const Login = ({ navigation }) => {
+
+  const [userInfo, setUserInfo] = useState({
+    email: "",
+    password: "",
+  });
+  
+  const [validationErrors, setValidationErrors] = useState({});
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  //validando tela de login
+  const validateLogin = () => {
+    const errors = {};
+
+    if (!userInfo.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userInfo.email)) {
+      errors.email = 'E-mail inválido';
+    }
+
+    if (!userInfo.password || userInfo.password.length < 6) {
+      errors.password = "Senha muito curta. Mínimo de 6 caracteres.";
+    }
+
+    setValidationErrors(errors);
+
+    return Object.keys(errors).length === 0;
+  }
+
+  const customLogin = () => {
+    if (validateLogin()) {
+      console.log("Login feito com sucesso");
+      console.log(userInfo);
+      navigation.navigate("Home");
+
+      setUserInfo({
+        email: "",
+        password: "",
+      });
+      setIsFormValid(false)
+    } else {
+      console.log("Login falhou. Tente novamente.")
+    }
+  }
+
+
   return (
     <View style={styles.loginBackground}>
       {/* header */}
@@ -17,27 +60,48 @@ const Login = ({navigation}) => {
       </View>
       {/* inputs */}
       <View style={styles.inputsContainer}>
-        {/* name */}        
+        {/* email */}        
         <View style={styles.inputBox}>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            {validationErrors.email && (
+              <Text style={{ color: "red", fontSize: 14 }}>
+                {validationErrors.email}
+              </Text>
+            )}
+          </View>
           <TextInput
+            autoCapitalize="none"
+            value={userInfo.email}
+            onChangeText={(text)=> setUserInfo({...userInfo, email: text})}
             style={styles.inputText}
             placeholder="Seu e-mail"
           >
           </TextInput>
           <View style={{borderBottomWidth:1, width:'90%'}}></View>
         </View>
-        {/* CPF */}
-        <View style={styles.inputBox}>
-          <TextInput
-            style={styles.inputText}
-            placeholder="Seu CPF"
-          >
-          </TextInput>
-          <View style={{borderBottomWidth:1, width:'90%'}}></View>
-        </View>
         {/* Password */}
         <View style={styles.inputBox}>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            {validationErrors.password && (
+              <Text style={{ color: "red", fontSize: 14 }}>
+                {validationErrors.password}
+              </Text>
+            )}
+          </View>
           <TextInput
+            autoCapitalize = "none"
+            value={userInfo.password}
+            onChangeText={(text)=> setUserInfo({...userInfo, password : text})}
             style={styles.inputText}
             placeholder="Sua senha"
           >
@@ -48,9 +112,9 @@ const Login = ({navigation}) => {
       {/* button */}
       <TouchableOpacity style={{ alignItems: 'center', paddingTop:100}}>
           <OptionBtn
-            text="Login"
+          text="Login"
           color="#390072"
-          onPress={()=> navigation.navigate('Home')}
+          onPress={customLogin}
           />
       </TouchableOpacity>
       <TouchableOpacity style={styles.linkToSubscribe}>
