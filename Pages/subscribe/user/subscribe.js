@@ -11,27 +11,32 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import OptionBtn from "../../../Components/optionBtn";
 
-
 const validationSchema = Yup.object({
-  fullname: Yup.string().trim().min(3, 'Nome invalido').required('Nome obrigatório'),
-  email: Yup.string().email('E-mail invalido').required('E-mail obrigatório'),
-  password: Yup.string().trim().min(8, 'Senha muito curta').required('Senha obrigatória'),
-  confirmPassword: Yup.string().oneOf([Yup.ref('password')], 'Senhas nao conferem').required('Confirmação de senha obrigatória'),
- });
+  fullname: Yup.string()
+    .trim()
+    .min(6, "Nome invalido")
+    .required("Nome obrigatório"),
+  email: Yup.string().email("E-mail invalido").required("E-mail obrigatório"),
+  password: Yup.string()
+    .trim()
+    .min(8, "Senha muito curta")
+    .required("Senha obrigatória"),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("password")], "Senhas nao conferem")
+    .required("Confirme sua senha"),
+  selectOption: Yup.string().trim().required('Selecione uma opção')
+});
 
 const Subscribe = ({ navigation }) => {
   const [userInfo, setUserInfo] = useState({
-    fullname: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    fullname: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    selectOption: ""
   });
 
   const [selectedUser, setSelectedUser] = useState("");
-
-  const handleOnChangeText = (value, fieldName) => {
-    setUserInfo({ ...userInfo, [fieldName]: value });
-  };
 
   return (
     <View style={styles.loginBackground}>
@@ -45,16 +50,30 @@ const Subscribe = ({ navigation }) => {
       {/* inputs */}
       <View style={styles.inputsContainer}>
         <Formik initialValues={userInfo} validationSchema={validationSchema}>
-          {({ values }) => {
+          {({ values, errors, handleChange }) => {
+            // console.log(values)
             const { fullname, email, password, confirmPassword } = values;
 
             return (
               <>
                 {/* name */}
                 <View style={styles.inputBox}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    {errors.fullname ? (
+                      <Text style={{ color: "red", fontSize: 16 }}>
+                        {errors.fullname}
+                      </Text>
+                    ) : null}
+                  </View>
                   <TextInput
+                    error="Invalid name"
                     value={fullname}
-                    onChangeText={(value) => handleOnChangeText(value, 'fullname')}
+                    onChangeText={handleChange("fullname")}
                     style={styles.inputText}
                     placeholder="Nome completo"
                   ></TextInput>
@@ -62,18 +81,43 @@ const Subscribe = ({ navigation }) => {
                 </View>
                 {/* email */}
                 <View style={styles.inputBox}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    {errors.email ? (
+                      <Text style={{ color: "red", fontSize: 16 }}>
+                        {errors.email}
+                      </Text>
+                    ) : null}
+                  </View>
                   <TextInput
                     value={email}
+                    onChangeText={handleChange("email")}
                     style={styles.inputText}
                     placeholder="E-mail"
-                    keyboardType="number-pad"
                   ></TextInput>
                   <View style={{ borderBottomWidth: 1, width: "90%" }}></View>
                 </View>
                 {/* senha */}
                 <View style={styles.inputBox}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    {errors.password ? (
+                      <Text style={{ color: "red", fontSize: 16 }}>
+                        {errors.password}
+                      </Text>
+                    ) : null}
+                  </View>
                   <TextInput
                     value={password}
+                    onChangeText={handleChange("password")}
                     style={styles.inputText}
                     placeholder="********"
                   ></TextInput>
@@ -81,8 +125,21 @@ const Subscribe = ({ navigation }) => {
                 </View>
                 {/* senha */}
                 <View style={styles.inputBox}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    {errors.confirmPassword ? (
+                      <Text style={{ color: "red", fontSize: 16 }}>
+                        {errors.confirmPassword}
+                      </Text>
+                    ) : null}
+                  </View>
                   <TextInput
                     value={confirmPassword}
+                    onChangeText={handleChange("confirmPassword")}
                     style={styles.inputText}
                     placeholder="Confirmar senha"
                     textContentType="password"
@@ -91,6 +148,18 @@ const Subscribe = ({ navigation }) => {
                 </View>
                 {/* select */}
                 <View style={styles.selectbox}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    {errors.selectOption ? (
+                      <Text style={{ color: "red", fontSize: 16 }}>
+                        {errors.selectOption}
+                      </Text>
+                    ) : null}
+                  </View>
                   <Picker
                     selectedValue={selectedUser}
                     onValueChange={(itemValue) => setSelectedUser(itemValue)}
@@ -106,11 +175,7 @@ const Subscribe = ({ navigation }) => {
                 {/* button */}
                 <TouchableOpacity style={{ paddingTop: 70 }}>
                   {/* Assuming OptionBtn is a custom component */}
-                  <OptionBtn
-                    text="Cadastrar"
-                    color="#390072"
-                    onPress={() => navigation.navigate('Subscribe2')}
-                  />
+                  <OptionBtn text="Cadastrar" color="#390072" />
                 </TouchableOpacity>
               </>
             );
