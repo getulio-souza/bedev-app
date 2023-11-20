@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import HandleSubmitBtn from "../../../Components/submitBtn";
+import client from "../../../api/client";
 
 const Subscribe = ({ navigation }) => {
   const [userInfo, setUserInfo] = useState({
@@ -53,10 +54,11 @@ const Subscribe = ({ navigation }) => {
     return Object.keys(errors).length === 0;
   };
 
-  const customSubmit = () => {
+  const customSubmit = async() => {
     if (validateForm()) {
       console.log("Form is valid");
       console.log(userInfo);
+      await signUp()
       navigation.navigate("Login");
       setUserInfo({
         fullname: "",
@@ -70,6 +72,23 @@ const Subscribe = ({ navigation }) => {
       console.log("Form is invalid");
     }
   };
+
+  //signUp
+  const signUp = async () => {
+    try {
+      console.log('fazendo cadastro...')
+      const res = await client.post('/create-user', {
+        fullname: userInfo.fullname,
+        email: userInfo.email,
+        password: userInfo.password,
+        confirmPassword: userInfo.confirmPassword,
+        selectOption: userInfo.selectOption
+      });
+      console.log('cadastro feito com sucesso', res.data);
+    } catch (error) {
+      console.error("cadastro falhou", error)
+    }
+  }
 
   return (
     <KeyboardAvoidingView style={{ flex: 1 }}>

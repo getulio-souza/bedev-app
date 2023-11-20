@@ -1,6 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './Pages/Home';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 import Courses from './Pages/education/courses';
 import FrontEnd from './Pages/education/Frameworks/Front_end/frontEnd';
@@ -18,6 +20,23 @@ import Subscribe from './Pages/subscribe/user/subscribe';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+  //connecting to backend
+
+  const fetchAPI = async () => {
+    try {
+      const response = await axios.get('http://192.168.0.7/3001');
+      console.log('conectou com o backend',response.data)
+    } catch (error) {
+      console.log('houve um erro', error.message)
+    }
+  }
+  
+  useEffect(() => {
+    fetchAPI()
+  }, [])
+
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
