@@ -13,8 +13,8 @@ import FrontSingleJob from './Pages/career/front/frontSingleJob';
 
 import Login from './Pages/login';
 import Subscribe from './Pages/subscribe/user/subscribe';
-import Subscribe2 from './Pages/subscribe/user/subscribe2';
-import Subscribe3 from './Pages/subscribe/user/subscribe3';
+// import Subscribe2 from './Pages/subscribe/user/subscribe2';
+// import Subscribe3 from './Pages/subscribe/user/subscribe3';
 const Stack = createNativeStackNavigator();
 
 export default function App() {

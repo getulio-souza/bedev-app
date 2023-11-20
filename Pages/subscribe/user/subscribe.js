@@ -5,27 +5,11 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  ScrollView,
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
-import { Formik } from "formik";
-import * as Yup from "yup";
-import OptionBtn from "../../../Components/optionBtn";
-
-const validationSchema = Yup.object({
-  fullname: Yup.string()
-    .trim()
-    .min(6, "Nome invalido")
-    .required("Nome obrigatório"),
-  email: Yup.string().email("E-mail invalido").required("E-mail obrigatório"),
-  password: Yup.string()
-    .trim()
-    .min(8, "Senha muito curta")
-    .required("Senha obrigatória"),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password")], "Senhas nao conferem")
-    .required("Confirme sua senha"),
-  selectOption: Yup.string().trim().required('Selecione uma opção')
-});
+import HandleSubmitBtn from "../../../Components/submitBtn";
 
 const Subscribe = ({ navigation }) => {
   const [userInfo, setUserInfo] = useState({
@@ -33,158 +17,200 @@ const Subscribe = ({ navigation }) => {
     email: "",
     password: "",
     confirmPassword: "",
-    selectOption: ""
+    selectOption: "",
   });
 
   const [selectedUser, setSelectedUser] = useState("");
+  const [validationErrors, setValidationErrors] = useState({});
+
+  const validateForm = () => {
+    const errors = {};
+
+    if (!userInfo.fullname || userInfo.fullname.length < 6) {
+      errors.fullname = "Nome inválido. Mínimo de 6 caracteres.";
+    }
+
+    if (!userInfo.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userInfo.email)) {
+      errors.email = "E-mail inválido.";
+    }
+
+    if (!userInfo.password || userInfo.password.length < 6) {
+      errors.password = "Senha muito curta. Mínimo de 6 caracteres.";
+    }
+
+    if (userInfo.password !== userInfo.confirmPassword) {
+      errors.confirmPassword = "Senhas não conferem.";
+    }
+
+    if (!userInfo.selectOption) {
+      errors.selectOption = "Selecione uma opção.";
+    }
+
+    setValidationErrors(errors);
+
+    return Object.keys(errors).length === 0;
+  };
+
+  const customSubmit = () => {
+    if (validateForm()) {
+      console.log("Form is valid");
+      console.log(userInfo);
+      // Add your custom submit logic here
+      // e.g., make an API call, navigate to another screen, etc.
+    } else {
+      console.log("Form is invalid");
+    }
+  };
 
   return (
-    <View style={styles.loginBackground}>
-      {/* header */}
-      <View style={styles.header}>
-        <View>
-          <Text style={styles.subscribeTitle}>Criar conta</Text>
+    <KeyboardAvoidingView style={{ flex: 1 }}>
+      <ScrollView contentContainerStyle={styles.loginBackground}>
+        <View style={styles.loginBackground}>
+          {/* header */}
+          <View style={styles.header}>
+            <View>
+              <Text style={styles.subscribeTitle}>Criar conta</Text>
+            </View>
+          </View>
+
+          {/* inputs */}
+          <View style={styles.inputsContainer}>
+            {/* name */}
+            <View style={styles.inputBox}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                {validationErrors.fullname && (
+                  <Text style={{ color: "red", fontSize: 14 }}>
+                    {validationErrors.fullname}
+                  </Text>
+                )}
+              </View>
+              <TextInput
+                value={userInfo.fullname}
+                onChangeText={(text) =>
+                  setUserInfo({ ...userInfo, fullname: text })
+                }
+                style={styles.inputText}
+                placeholder="Nome completo"
+              />
+              <View style={{ borderBottomWidth: 1, width: "90%" }} />
+            </View>
+
+            {/* email */}
+            <View style={styles.inputBox}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                {validationErrors.email && (
+                  <Text style={{ color: "red", fontSize: 14 }}>
+                    {validationErrors.email}
+                  </Text>
+                )}
+              </View>
+              <TextInput
+                value={userInfo.email}
+                onChangeText={(text) =>
+                  setUserInfo({ ...userInfo, email: text })
+                }
+                style={styles.inputText}
+                placeholder="E-mail"
+              />
+              <View style={{ borderBottomWidth: 1, width: "90%" }} />
+            </View>
+
+            {/* password */}
+            <View style={styles.inputBox}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                {validationErrors.password && (
+                  <Text style={{ color: "red", fontSize: 14 }}>
+                    {validationErrors.password}
+                  </Text>
+                )}
+              </View>
+              <TextInput
+                value={userInfo.password}
+                onChangeText={(text) =>
+                  setUserInfo({ ...userInfo, password: text })
+                }
+                style={styles.inputText}
+                placeholder="********"
+              />
+              <View style={{ borderBottomWidth: 1, width: "90%" }} />
+            </View>
+
+            {/* confirmPassword */}
+            <View style={styles.inputBox}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                {validationErrors.confirmPassword && (
+                  <Text style={{ color: "red", fontSize: 14 }}>
+                    {validationErrors.confirmPassword}
+                  </Text>
+                )}
+              </View>
+              <TextInput
+                value={userInfo.confirmPassword}
+                onChangeText={(text) =>
+                  setUserInfo({ ...userInfo, confirmPassword: text })
+                }
+                style={styles.inputText}
+                placeholder="Confirmar senha"
+                textContentType="password"
+              />
+              <View style={{ borderBottomWidth: 1, width: "90%" }} />
+            </View>
+
+            {/* select */}
+            <View style={styles.selectbox}>
+              {validationErrors.selectOption && (
+                <Text style={{ color: "red", fontSize: 14 }}>
+                  {validationErrors.selectOption}
+                </Text>
+              )}
+              <Picker
+                selectedValue={selectedUser}
+                onValueChange={(itemValue) => {
+                  setUserInfo({ ...userInfo, selectOption: itemValue });
+                  setSelectedUser(itemValue);
+                }}
+              >
+                <Picker.Item label="Seu objetivo" value="" />
+                <Picker.Item label="Front-end" value="Front-end" />
+                <Picker.Item label="Back-end" value="Back-end" />
+                <Picker.Item label="Full-Stack" value="Full-Stack" />
+                <Picker.Item label="Data" value="Data" />
+                <Picker.Item label="Mobile" value="Mobile" />
+              </Picker>
+            </View>
+
+            {/* button */}
+            <HandleSubmitBtn
+              title="Cadastrar"
+              color="#390072"
+              onPress={customSubmit}
+            />
+          </View>
         </View>
-      </View>
-
-      {/* inputs */}
-      <View style={styles.inputsContainer}>
-        <Formik initialValues={userInfo} validationSchema={validationSchema}>
-          {({ values, errors, handleChange }) => {
-            // console.log(values)
-            const { fullname, email, password, confirmPassword } = values;
-
-            return (
-              <>
-                {/* name */}
-                <View style={styles.inputBox}>
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    {errors.fullname ? (
-                      <Text style={{ color: "red", fontSize: 16 }}>
-                        {errors.fullname}
-                      </Text>
-                    ) : null}
-                  </View>
-                  <TextInput
-                    error="Invalid name"
-                    value={fullname}
-                    onChangeText={handleChange("fullname")}
-                    style={styles.inputText}
-                    placeholder="Nome completo"
-                  ></TextInput>
-                  <View style={{ borderBottomWidth: 1, width: "90%" }}></View>
-                </View>
-                {/* email */}
-                <View style={styles.inputBox}>
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    {errors.email ? (
-                      <Text style={{ color: "red", fontSize: 16 }}>
-                        {errors.email}
-                      </Text>
-                    ) : null}
-                  </View>
-                  <TextInput
-                    value={email}
-                    onChangeText={handleChange("email")}
-                    style={styles.inputText}
-                    placeholder="E-mail"
-                  ></TextInput>
-                  <View style={{ borderBottomWidth: 1, width: "90%" }}></View>
-                </View>
-                {/* senha */}
-                <View style={styles.inputBox}>
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    {errors.password ? (
-                      <Text style={{ color: "red", fontSize: 16 }}>
-                        {errors.password}
-                      </Text>
-                    ) : null}
-                  </View>
-                  <TextInput
-                    value={password}
-                    onChangeText={handleChange("password")}
-                    style={styles.inputText}
-                    placeholder="********"
-                  ></TextInput>
-                  <View style={{ borderBottomWidth: 1, width: "90%" }}></View>
-                </View>
-                {/* senha */}
-                <View style={styles.inputBox}>
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    {errors.confirmPassword ? (
-                      <Text style={{ color: "red", fontSize: 16 }}>
-                        {errors.confirmPassword}
-                      </Text>
-                    ) : null}
-                  </View>
-                  <TextInput
-                    value={confirmPassword}
-                    onChangeText={handleChange("confirmPassword")}
-                    style={styles.inputText}
-                    placeholder="Confirmar senha"
-                    textContentType="password"
-                  ></TextInput>
-                  <View style={{ borderBottomWidth: 1, width: "90%" }}></View>
-                </View>
-                {/* select */}
-                <View style={styles.selectbox}>
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    {errors.selectOption ? (
-                      <Text style={{ color: "red", fontSize: 16 }}>
-                        {errors.selectOption}
-                      </Text>
-                    ) : null}
-                  </View>
-                  <Picker
-                    selectedValue={selectedUser}
-                    onValueChange={(itemValue) => setSelectedUser(itemValue)}
-                  >
-                    <Picker.Item label="Seu objetivo" value="" />
-                    <Picker.Item label="Front-end" value="Front-end" />
-                    <Picker.Item label="Back-end" value="Back-end" />
-                    <Picker.Item label="Full-Stack" value="Full-Stack" />
-                    <Picker.Item label="Data" value="Data" />
-                    <Picker.Item label="Mobile" value="Mobile" />
-                  </Picker>
-                </View>
-                {/* button */}
-                <TouchableOpacity style={{ paddingTop: 70 }}>
-                  {/* Assuming OptionBtn is a custom component */}
-                  <OptionBtn text="Cadastrar" color="#390072" />
-                </TouchableOpacity>
-              </>
-            );
-          }}
-        </Formik>
-      </View>
-    </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   loginBackground: {
@@ -223,7 +249,7 @@ const styles = StyleSheet.create({
   },
 
   inputBox: {
-    paddingTop: 60,
+    paddingTop: 50,
   },
 
   selectbox: {
@@ -234,7 +260,7 @@ const styles = StyleSheet.create({
   inputText: {
     color: "#6D6D6D",
     fontWeight: "900",
-    fontSize: 20,
+    fontSize: 17,
   },
 
   statusbarContainer: {
@@ -266,4 +292,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Subscribe;
+export default Subscribe
