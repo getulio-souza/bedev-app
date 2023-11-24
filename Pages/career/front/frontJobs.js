@@ -154,8 +154,6 @@ const FrontJobs = ({ navigation }) => {
           </View>
           
        </View>
-
-
       </View>
     </ScrollView>
   );

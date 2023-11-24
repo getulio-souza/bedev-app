@@ -32,6 +32,7 @@ const Login = ({ navigation }) => {
   const customLogin = () => {
     if (validateLogin()) {
       console.log("Login feito com sucesso");
+      alert("Login feito com sucesso");
       console.log(userInfo);
       navigation.navigate("Home");
 
@@ -42,6 +43,7 @@ const Login = ({ navigation }) => {
       setIsFormValid(false)
     } else {
       console.log("Login falhou. Tente novamente.")
+      alert("Login falhou. Tente novamente.")
     }
   }
 
